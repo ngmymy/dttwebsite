@@ -1,0 +1,71 @@
+/* Page layout */
+.page {
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+/* Navigation bar container */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #eeeeef;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20%; /* Center align content with padding */
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+/* Logo section */
+.logoTitle {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Space between logo and text */
+}
+
+.logoImg {
+  border-radius: 50%;
+}
+
+.logo {
+  font-weight: bold;
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-size: 23px;
+  color: #000000;
+  line-height: 1; /* No extra spacing */
+}
+
+.logo span {
+  display: block;
+  font-size: 14px; /* Smaller subtitle */
+  color: #555555;
+  margin-top: 4px;
+}
+
+/* Navigation links */
+.navLinks {
+  display: flex;
+  gap: 3rem; /* Space between links */
+}
+
+.navLinks a {
+  text-decoration: none;
+  color: #000000;
+  font-size: 16px;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.navLinks a:hover {
+  color: #1f4fd0;
+}
+
+/* Main content spacing */
+.main {
+  margin-top: 100px; /* Offset for the fixed navbar */
+  padding: 20px;
+}
