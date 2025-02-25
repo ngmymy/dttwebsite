@@ -69,3 +69,66 @@
   margin-top: 100px; /* Offset for the fixed navbar */
   padding: 20px;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  color: #000000;
+}
+
+.formHeader {
+
+}
+.campInfo, .registrationForm {
+  width: 100%;
+  background-color: #f9f9f9;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.infoBox p {
+  margin: 10px 0;
+}
+
+.highlight {
+  color: #d9534f;
+  font-weight: bold;
+}
+
+.registrationForm form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.registrationForm label {
+  font-weight: bold;
+}
+
+.registrationForm input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.registrationForm button {
+  margin-top: 15px;
+  padding: 12px 18px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.registrationForm button:hover {
+  background-color: #0056b3;
+}

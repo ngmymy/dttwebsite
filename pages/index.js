@@ -20,9 +20,9 @@ export default function Home() {
           </div>
         </div></Link>
         <nav className={styles.navLinks}>
-          <Link href="/events">Events</Link>
+          <Link href="/">Home</Link>
           <Link href="/camp">Camp</Link>
-          <Link href="/hts">HTs</Link>
+          <Link href="/bch">Ban Chấp Hành</Link>
           <Link href="/contact">Contact</Link>
         </nav>
       </header>
