@@ -2,11 +2,11 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Link from 'next/link';
 
-export default function bch() {
+export default function BCH() {
   return (
     <div className={styles.page}>
       <Head>
-        <title>Camp Information - Doan Toma Thien</title>
+        <title>Ban Chấp Hành - Doan Toma Thien</title>
       </Head>
 
       <header className={styles.navbar}>
@@ -34,7 +34,28 @@ export default function bch() {
       </header>
 
       <main className={styles.main}>
-        
+        <section className={styles.bchContainer}>
+          <div className={styles.bchGrid}>
+            <div className={styles.bchMember}>
+              <img src="/images/member1.jpg" alt="President" />
+              <h3>Đoàn Trưởng</h3>
+              <p className={styles.bchTitle}>Chapter President</p>
+              <p>Teresa - Binh Xuan Nguyen</p>
+            </div>
+            <div className={styles.bchMember}>
+              <img src="/images/member2.jpg" alt="Vice President Admin" />
+              <h3>Phó Quản Trị</h3>
+              <p className={styles.bchTitle}>Chapter Vice President Of Administrative Affairs</p>
+              <p>Isave - My My Trieu Nguyen</p>
+            </div>
+            <div className={styles.bchMember}>
+              <img src="/images/member3.jpg" alt="Vice President Academic" />
+              <h3>Phó Nghiên Huấn</h3>
+              <p className={styles.bchTitle}>Chapter Vice President Of Academic Affairs</p>
+              <p>Dominico - Tyler Pham</p>
+            </div>
+          </div>
+        </section>
       </main>
 
       <footer>
