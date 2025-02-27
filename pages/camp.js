@@ -16,11 +16,11 @@ export default function Camp() {
               className={styles.logoImg}
               src="/doanlogo.png"
               alt="Doan Toma Thien Logo"
-              width={70}
-              height={70}
+              width={60}
+              height={60}
             />
             <div className={styles.logo}>
-              Doan Toma Thien
+              Đoàn Tôma Thiện
               <span>St. Paul, Minnesota</span>
             </div>
           </div>
@@ -37,6 +37,7 @@ export default function Camp() {
         <div className={styles.container}>
           <section className={styles.campInfo}>
           <h1>Annual Summer Camp 2025</h1>
+          <hr className={styles.formLineBreak}></hr>
           <div className={styles.infoBox}>
             <p><strong>Dates:</strong> June 27th - June 29th, 2025</p>
             <p><strong>Fees:</strong> $50 for 10 y/o & below, $70 for 10+ y/o</p>
@@ -48,6 +49,7 @@ export default function Camp() {
 
         <section className={styles.registrationForm}>
           <h2>Camper Registration Form</h2>
+          <hr className={styles.formLineBreak}></hr>
           <form method="post" encType="multipart/form-data">
             <label>
               First Name:
@@ -65,17 +67,22 @@ export default function Camp() {
             </label>
 
             <label for="nganh">Nganh: 
-              <select name="nganh" id="nganh" autoFocus>
-                <option value="Au Nhi">Ấu Nhi</option>
-                <option value="Thieu Nhi">Thiếu Nhi</option>
-                <option value="Nghia Si">Nghĩa Sĩ</option>
-                <option value="Hiep Si">Hiệp Sĩ</option>
+              <select name="nganh" id="nganh">
+                <option value="Au Nhi" id="aunhi">Ấu Nhi</option>
+                <option value="Thieu Nhi" id="thieunhi">Thiếu Nhi</option>
+                <option value="Nghia Si" id="nghiasi">Nghĩa Sĩ</option>
+                <option value="Hiep Si" id="hiepsi">Hiệp Sĩ</option>
               </select>
             </label>
             
             <label>
-              Check here if the participant is over 18 years old.
-              <input type="checkbox" name="legalAge" value="Yes" />
+              Special Needs (medical history, allergies, medications, etc):
+              <input type="text" name="specialNeeds" />
+            </label>
+
+            <label>
+              Guardian's Full Name and Relationship:
+              <input type="text" name="guardiansname" />
             </label>
 
             <label>

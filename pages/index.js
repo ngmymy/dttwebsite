@@ -11,11 +11,11 @@ export default function Home() {
             className={styles.logoImg}
             src="/doanlogo.png"
             alt="Doan Toma Thien Logo"
-            width={70}
-            height={70}
+            width={60}
+            height={60}
           />
           <div className={styles.logo}>
-            Doan Toma Thien
+            Đoàn Tôma Thiện
             <span>St. Paul, Minnesota</span>
           </div>
         </div></Link>

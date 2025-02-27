@@ -70,11 +70,3 @@ footer a {
   color: #26313d;
   font-size: small;
 }
-
-hr {
-  border: none;
-  border-top: 1px solid rgb(108, 108, 108);
-  width: 60%;
-  margin: auto;
-  margin-top: 50px;
-}
