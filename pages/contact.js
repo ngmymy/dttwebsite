@@ -1,44 +1,19 @@
-import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-import Link from 'next/link'
+import footer from "./footer";
+import header from "./header";
 
 export default function Contact() {
   return (
     <div className={styles.page}>
+      {header()}
       <main>
         <div className={styles.page}>
-          <header className={styles.navbar}>
-          <Link href="/"><div className={styles.logoTitle}>
-            <img
-              className={styles.logoImg}
-              src="/doanlogo.png"
-              alt="Doan Toma Thien Logo"
-              width={70}
-              height={70}
-            />
-            <div className={styles.logo}>
-              Doan Toma Thien
-              <span>St. Paul, Minnesota</span>
-            </div>
-          </div></Link>
-            <nav className={styles.navLinks}>
-              <Link href="/">Home</Link>
-              <Link href="/camp">Camp</Link>
-              <Link href="/bch">Ban Chấp Hành</Link>
-              <Link href="/contact">Contact</Link>
-            </nav>
-          </header>
-    
           <main className={styles.main}>
             <h1>Contact</h1>
           </main>
         </div>
       </main>
-      <footer>
-        <a href="https://github.com/ngmymy" target="_blank" rel="noopener noreferrer">
-          Maintained by Doan Toma Thien, MN. Last updated on 1/18/2025
-        </a>
-      </footer>
+      {footer()}
     </div>
   );
 }
