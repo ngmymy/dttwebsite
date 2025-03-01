@@ -1,4 +1,5 @@
-/* Page layout */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Roboto+Slab:wght@100..900&display=swap');
+
 .page {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -33,10 +34,10 @@
 
 .logo {
   font-weight: bold;
-  font-family: "Lucida Console", "Courier New", monospace;
-  font-size: 23px;
+  font-size: 21px;
   color: #000000;
   line-height: 1; /* No extra spacing */
+  font-family: "Roboto Slab", serif
 }
 
 .logo span {
@@ -64,6 +65,23 @@
   color: #1f4fd0;
 }
 
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 16px 10%;
+  }
+
+  .navLinks {
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 10px;
+  }
+
+  .navLinks a {
+    font-size: 14px;
+  }
+}
+
 /* Main content spacing */
 .main {
   margin-top: 100px; /* Offset for the fixed navbar */
@@ -80,15 +98,19 @@
   color: #000000;
 }
 
-.formHeader {
-
+.formLineBreak {
+  margin-left: 2px;
+  margin-top: 10px;
+  margin-bottom: 14px;
 }
+
 .campInfo, .registrationForm {
   width: 100%;
   background-color: #f9f9f9;
   padding: 25px;
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
 }
 
 .infoBox p {
@@ -132,3 +154,88 @@
 .registrationForm button:hover {
   background-color: #0056b3;
 }
+
+.bchPageHeader {
+  font-family: "Roboto Slab", serif;
+  font-size: 2.3rem;
+  font-weight: 600;
+  letter-spacing: 0.025rem;
+  font-style: normal;
+  text-transform: capitalize;
+  color: white;
+  background-color: #30404d;
+  border-radius: 0.875rem;
+  -webkit-border-radius: 0.875rem;
+  -moz-border-radius: 0.875rem;
+  padding: 0.75rem 1rem;
+  border-style: none;
+  border-width: 0rem;
+  border-color: #EF2D56;
+  -webkit-box-shadow: -4px 12px 144px -13px rgba(51,51,51,0.29);
+  -moz-box-shadow: -4px 12px 144px -13px rgba(51,51,51,0.29);
+  -box-shadow: -4px 12px 144px -13px rgba(51,51,51,0.29);
+  margin: auto;
+  margin-top: 20px;
+}
+
+.bchContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
+.bchGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+}
+
+.bchMember {
+  background: #252c32;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 260px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  font-family: "Mulish", serif;
+}
+
+.bchMember img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 18px;
+  margin-top: 13px;
+}
+
+.bchMember h3 {
+  font-size: 18px;
+}
+
+.bchTitle {
+  font-size: 14px;
+  color: #b9b9b9;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.bchName {
+  font-weight: 800;
+  font-size: 16px;
+  margin-bottom: 14px;
+}
+
+.nganhLineBreak {
+  border: none;
+  border-top: 1px solid rgb(108, 108, 108);
+  width: 50%;
+  margin: auto;
+  margin-top: 50px;
+}
+
