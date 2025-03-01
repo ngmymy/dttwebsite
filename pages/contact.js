@@ -1,5 +1,4 @@
 import styles from '../styles/Contact.module.css';
-import styles from '../styles/Home.module.css';
 import footer from "./footer";
 import header from "./header";
 
@@ -17,18 +16,18 @@ export default function Contact() {
                 <form id="contact-form" className={styles.formHorizontal} role="form">
                   <div className={styles.formGroup}>
                     <div className={styles.colSm12}>
-                      <input type="text" className={styles.formControl} id="name" placeholder="NAME" name="name" value="" required />
+                      <input type="text" className={styles.formControl} id="name" placeholder="NAME" name="name" required />
                     </div>
                   </div>
                   <div className={styles.formGroup}>
                     <div className={styles.colSm12}>
-                      <input type="email" className={styles.formControl} id="email" placeholder="EMAIL" name="email" value="" required />
+                      <input type="email" className={styles.formControl} id="email" placeholder="EMAIL" name="email" required />
                     </div>
                   </div>
                   <textarea className={styles.formControl} rows="10" placeholder="MESSAGE" name="message" required></textarea>
-                  <button className={styles.btnPrimary} id="submit" type="submit" value="SEND">
+                  <button className={styles.sendButton} id="submit" type="submit" value="SEND">
                     <div className={styles.altSendButton}>
-                      <i className="fa fa-paper-plane"></i><span className={styles.sendText}>SEND</span>
+                      <i src="/send.png" className={styles.paperPlane}></i><span className={styles.sendText}>SEND</span>
                     </div>
                   </button>
                 </form>
@@ -36,34 +35,73 @@ export default function Contact() {
                 <div className={styles.directContactContainer}>
                   <ul className={styles.contactList}>
                     <li className={styles.listItem}>
-                      <img src="/marker.png" alt="marker" className={styles.icon} />
-                      <span className={styles.contactText}>St. Adalbert's Church, St. Paul, Minnesota</span>
+                      {/* <img src="/marker.png" alt="marker" className={styles.icon} /> */}
+                      <div className={styles.logoTitle}>
+                        <img
+                            className={styles.logoImg}
+                            src="/location.png"
+                            alt="Location Icon"
+                            width={50}
+                            height={50}
+                        />
+                        <div className={styles.logo}>
+                          <a href="https://maps.app.goo.gl/6Swumcw8vm9RHvkU9" title="Send me an email">
+                            St. Adalbert's Church
+                            <span>St. Paul, Minnesota</span>
+                          </a>
+                        </div>
+                      </div>
                     </li>
                     <li className={styles.listItem}>
-                      <i className="fa fa-phone fa-2x"></i>
-                      <span className={styles.contactText}><a href="tel:1-212-555-5555" title="Give me a call">(212) 555-2368</a></span>
+                      <div className={styles.logoTitle}>
+                        <img
+                            className={styles.logoImg}
+                            src="/phone.png"
+                            alt="Phone Icon"
+                            width={50}
+                            height={50}
+                        />
+                        <div className={styles.logo}>
+                          <a href="tel:1-651-309-7261" title="Send me an email">
+                            651-309-7261
+                            {/* <span>St. Paul, Minnesota</span> */}
+                          </a>
+                        </div>
+                      </div>
                     </li>
                     <li className={styles.listItem}>
-                      <i className="fa fa-envelope fa-2x"></i>
-                      <span className={styles.contactText}><a href="mailto:#" title="Send me an email">hitmeup@gmail.com</a></span>
+                      <div className={styles.logoTitle}>
+                        <img
+                            className={styles.logoImg}
+                            src="/mail.png"
+                            alt="Mail Icon"
+                            width={50}
+                            height={50}
+                        />
+                        <div className={styles.logo}>
+                          <a href="mailto:nguy4513@umn.edu" title="Send me an email">
+                            nguy4513@umn.edu
+                          </a>
+                        </div>
+                      </div>
+                      <div>
+                        <hr className={styles.contactIconLineBreak}/>
+                          <ul className={styles.socialMediaList}>
+                            <li>
+                              <a href="https://www.facebook.com/doantomathienstpmn" target="_blank" rel="noopener noreferrer" className={styles.contactIcon}>
+                                <img src="/facebook.png" alt="Facebook Icon"/>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="https://www.instagram.com/tntt_tomathien?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className={styles.contactIcon}>
+                                <img src="/instagram.png" alt="Instagram Icon" />
+                              </a>
+                            </li>
+                          </ul>
+                          <hr className={styles.contactIconLineBreak2}/>
+                      </div>
                     </li>
                   </ul>
-                  <hr />
-                  <ul className={styles.socialMediaList}>
-                    <li><a href="#" target="_blank" className={styles.contactIcon}>
-                      <i className="fa fa-github" aria-hidden="true"></i></a>
-                    </li>
-                    <li><a href="#" target="_blank" className={styles.contactIcon}>
-                      <i className="fa fa-codepen" aria-hidden="true"></i></a>
-                    </li>
-                    <li><a href="#" target="_blank" className={styles.contactIcon}>
-                      <i className="fa fa-twitter" aria-hidden="true"></i></a>
-                    </li>
-                    <li><a href="#" target="_blank" className={styles.contactIcon}>
-                      <i className="fa fa-instagram" aria-hidden="true"></i></a>
-                    </li>
-                  </ul>
-                  <hr />
                 </div>
               </div>
             </section>

@@ -20,13 +20,28 @@ export default function camp2025form() {
                     <input type="date" name="birthdate" required/>
                 </label>
 
+                <label for="gender">Gender:
+                    <select name="gender" id="gender" required>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </label>
+
                 <label for="nganh">Ngành:
-                    <select name="nganh" id="nganh" autoFocus>
+                    <select name="nganh" id="nganh" required>
                         <option value="Au Nhi">Ấu Nhi</option>
                         <option value="Thieu Nhi">Thiếu Nhi</option>
                         <option value="Nghia Si">Nghĩa Sĩ</option>
                         <option value="Hiep Si">Hiệp Sĩ</option>
                     </select>
+                </label>
+                <label>
+                    Special Needs (medical conditions, allergies, etc.):
+                    <input type="text" name="specialNeeds" placeholder="Special Needs" required/>
+                </label>
+                <label>
+                    Guardian's Full Name:
+                    <input type="text" name="parentName" placeholder="Full Name" required/>
                 </label>
                 <label>
                     Guardian's Contact Phone Number:
