@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-import Link from 'next/link';
+import header from "./header";
+import footer from "./footer";
 
 export default function BCH() {
   return (
@@ -8,30 +9,7 @@ export default function BCH() {
       <Head>
         <title>Ban Chấp Hành - Doan Toma Thien</title>
       </Head>
-
-      <header className={styles.navbar}>
-        <Link href="/">
-          <div className={styles.logoTitle}>
-            <img
-              className={styles.logoImg}
-              src="/doanlogo.png"
-              alt="Doan Toma Thien Logo"
-              width={60}
-              height={60}
-            />
-            <div className={styles.logo}>
-              Đoàn Tôma Thiện
-              <span>St. Paul, Minnesota</span>
-            </div>
-          </div>
-        </Link>
-        <nav className={styles.navLinks}>
-          <Link href="/">Home</Link>
-          <Link href="/camp">Camp</Link>
-          <Link href="/bch">Ban Chấp Hành</Link>
-          <Link href="/contact">Contact</Link>
-        </nav>
-      </header>
+      {header()}
 
       <main className={styles.main}>
         <h1 className={styles.bchPageHeader}>Ban Chấp Hành 2024-2026</h1>
@@ -105,12 +83,7 @@ export default function BCH() {
           </div>
         </section>
       </main>
-
-      <footer>
-        <a href="https://github.com/ngmymy" target="_blank" rel="noopener noreferrer">
-          Maintained by Doan Toma Thien, MN. Last updated on 1/18/2025
-        </a>
-      </footer>
+      {footer()}
     </div>
   );
 }
