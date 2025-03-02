@@ -66,14 +66,10 @@
 }
 
 @media (max-width: 768px) {
-  .main {
-    margin-top: 40%;
-  }
-
   .navbar {
     flex-direction: column;
     padding: 16px 10%;
-    margin-bottom: 20px; 
+    margin-bottom: 20px; /* Add bottom margin for mobile view */
   }
 
   .navLinks {
@@ -85,18 +81,15 @@
   .navLinks a {
     font-size: 14px;
   }
-}
 
-@media (max-width: 320px) {
   .main {
-    margin-top: 40%;
+    margin-top: 140px; /* Add top margin for mobile view */
   }
 }
 
-
 /* Main content spacing */
 .main {
-  margin-top: 100px; 
+  margin-top: 100px; /* Offset for the fixed navbar */
   padding: 20px;
 }
 

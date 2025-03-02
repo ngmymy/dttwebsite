@@ -16,18 +16,24 @@ export default function Contact() {
                 <form id="contact-form" className={styles.formHorizontal} role="form">
                   <div className={styles.formGroup}>
                     <div className={styles.colSm12}>
-                      <input type="text" className={styles.formControl} id="name" placeholder="NAME" name="name" required />
+                      <input type="text" className={styles.formControl} id="name" placeholder="NAME" name="name" maxlength="30" required />
                     </div>
                   </div>
                   <div className={styles.formGroup}>
                     <div className={styles.colSm12}>
-                      <input type="email" className={styles.formControl} id="email" placeholder="EMAIL" name="email" required />
+                      <input type="email" className={styles.formControl} id="email" placeholder="EMAIL" name="email" maxlength="30" required/>
                     </div>
                   </div>
-                  <textarea className={styles.formControl} rows="10" placeholder="MESSAGE" name="message" required></textarea>
+                  <textarea className={styles.formControl} rows="10" placeholder="MESSAGE" name="message" maxlength="400" required></textarea>
                   <button className={styles.sendButton} id="submit" type="submit" value="SEND">
                     <div className={styles.altSendButton}>
-                      <i src="/send.png" className={styles.paperPlane}></i><span className={styles.sendText}>SEND</span>
+                      <img 
+                        src="/send2.png" 
+                        className={styles.paperPlane}
+                        width={22}
+                        height={22}
+                      />
+                      <span className={styles.sendText}>SEND</span>
                     </div>
                   </button>
                 </form>
@@ -35,14 +41,13 @@ export default function Contact() {
                 <div className={styles.directContactContainer}>
                   <ul className={styles.contactList}>
                     <li className={styles.listItem}>
-                      {/* <img src="/marker.png" alt="marker" className={styles.icon} /> */}
                       <div className={styles.logoTitle}>
                         <img
-                            className={styles.logoImg}
-                            src="/location.png"
-                            alt="Location Icon"
-                            width={50}
-                            height={50}
+                          className={styles.logoImg}
+                          src="/location.png"
+                          alt="Location Icon"
+                          width={50}
+                          height={50}
                         />
                         <div className={styles.logo}>
                           <a href="https://maps.app.goo.gl/6Swumcw8vm9RHvkU9" title="Send me an email">
@@ -64,7 +69,6 @@ export default function Contact() {
                         <div className={styles.logo}>
                           <a href="tel:1-651-309-7261" title="Send me an email">
                             651-309-7261
-                            {/* <span>St. Paul, Minnesota</span> */}
                           </a>
                         </div>
                       </div>
@@ -87,16 +91,21 @@ export default function Contact() {
                       <div>
                         <hr className={styles.contactIconLineBreak}/>
                           <ul className={styles.socialMediaList}>
-                            <li>
-                              <a href="https://www.facebook.com/doantomathienstpmn" target="_blank" rel="noopener noreferrer" className={styles.contactIcon}>
+                            <a href="https://www.facebook.com/doantomathienstpmn" target="_blank" rel="noopener noreferrer" className={styles.contactIcon}>
+                              <li>
                                 <img src="/facebook.png" alt="Facebook Icon"/>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="https://www.instagram.com/tntt_tomathien?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className={styles.contactIcon}>
+                              </li>
+                            </a>
+                            <a href="https://www.instagram.com/tntt_tomathien?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className={styles.contactIcon}>
+                              <li> 
                                 <img src="/instagram.png" alt="Instagram Icon" />
-                              </a>
-                            </li>
+                              </li>
+                            </a>
+                            <a href="https://www.instagram.com/tntt_tomathien?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className={styles.contactIcon}>
+                              <li> 
+                                <img src="/instagram.png" alt="Instagram Icon" />
+                              </li>
+                            </a>
                           </ul>
                           <hr className={styles.contactIconLineBreak2}/>
                       </div>

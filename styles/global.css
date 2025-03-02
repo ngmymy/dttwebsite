@@ -6,7 +6,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: ##1a222b;
+    --background: #1a222b;
     --foreground: #ededed;
   }
 }
@@ -61,6 +61,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: auto;
 }
 footer a {
   display: flex;

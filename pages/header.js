@@ -9,8 +9,8 @@ export default function header() {
                     className={styles.logoImg}
                     src="/doanlogo.png"
                     alt="Doan Toma Thien Logo"
-                    width={70}
-                    height={70}
+                    width={60}
+                    height={60}
                 />
                 <div className={styles.logo}>
                     Đoàn Tôma Thiện

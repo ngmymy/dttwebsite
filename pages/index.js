@@ -12,6 +12,9 @@ export default function Home() {
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
         <p>(Add more content here to make the page scrollable.)</p>
         <p>Scroll down to see the fixed navigation bar in action.</p>
+
+        <h1>Announcements</h1>
+        <h2>Upcoming Events</h2>
       </main>
       {footer()}
     </div>
