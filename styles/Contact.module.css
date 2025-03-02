@@ -62,7 +62,7 @@
 .sectionHeader {
   text-align: center;
   margin: 0 auto;
-  margin-top: 100px;
+  margin-top: auto;
   margin-bottom: 30px;
   padding: 40px 0;
   font: 300 60px 'Oswald', sans-serif;
@@ -293,6 +293,9 @@
     height: 60px;
     line-height: 60px;
   }
+  .main {
+    margin-top: 30%;
+  }
 }
 
 @media screen and (max-width: 569px) {
@@ -326,6 +329,9 @@
     width: 55px;
     height: 55px;
     line-height: 55px;
+  }
+  .main {
+    margin-top: 40%;
   }
 }
 

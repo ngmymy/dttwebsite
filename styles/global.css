@@ -43,6 +43,12 @@ main {
   margin: auto;
 }
 
+@media (max-width: 768px) {
+  main {
+    margin-top: 80%; /* Add top margin for mobile view */
+  }
+}
+
 h2 {
   margin-bottom: 12px;
 }
