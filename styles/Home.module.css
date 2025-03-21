@@ -140,23 +140,24 @@
   }
 
   .navLinks {
-    flex-direction: column;
+    flex-direction: row;
     gap: 1rem;
     margin-top: 10px;
   }
 
   .navLinks a {
-    font-size: 14px;
+    font-size: 18px;
   }
 
   .main {
-    margin-top: 44%; /* Add top margin for mobile view */
+    margin-top: 30%; /* Add top margin for mobile view */
   }
 
   /* Homepage Mobile View */
   .homepageTitle {
     font-size: 2.5rem;
-    margin-left: 10%;
+    margin-left: 0%;
+    margin-bottom: 2%;
   }
   
   .homepageCenter {
@@ -165,9 +166,7 @@
   
   .doanImg {
     max-width: 360px;
-    margin: auto;
-    border-radius: 25px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10%;
   }
   
   .homepageSectionContainer {
@@ -177,7 +176,7 @@
     gap: 40px;
     max-width: 1200px;
     margin: auto;
-    margin-top: 2%;
+    /* margin-top: 2%; */
   }
   
   .homepageTitle2 {
@@ -190,6 +189,7 @@
     font: 1.9rem;
     padding: 10px;
   }
+
   .homepageLinebreak {
     border: none;
     border-top: 1px solid rgb(108, 108, 108);
@@ -197,6 +197,7 @@
     margin: auto;
     margin-top: 1%;
   }
+
   .homepageSection {
     width: 350px;
   }
