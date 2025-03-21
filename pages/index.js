@@ -9,10 +9,6 @@ export default function Home() {
       <main className={styles.main}>
         <h1 className={styles.homepageTitle}>Đoàn Tôma Thiện</h1>
         <img src="/doanpicCropped.jpg" alt="doan pic" className={styles.doanImg}/>
-        {/* <p>Scroll down to see the fixed navigation bar in action.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-        <p>(Add more content here to make the page scrollable.)</p>
-        <p>Scroll down to see the fixed navigation bar in action.</p> */}
         <div className={styles.homepageSectionContainer}>
           
           <div className={styles.homepageSection}>
