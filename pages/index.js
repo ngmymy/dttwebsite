@@ -7,14 +7,31 @@ export default function Home() {
     <div className={styles.page}>
       {header()}
       <main className={styles.main}>
-        <h1>Welcome to Đoàn Tôma Thiện's Homepage</h1>
-        <p>Scroll down to see the fixed navigation bar in action.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-        <p>(Add more content here to make the page scrollable.)</p>
-        <p>Scroll down to see the fixed navigation bar in action.</p>
+        <h1 className={styles.homepageTitle}>Đoàn Tôma Thiện</h1>
+        <img src="/doanpicCropped.jpg" alt="doan pic" className={styles.doanImg}/>
+        <div className={styles.homepageSectionContainer}>
+          
+          <div className={styles.homepageSection}>
+            <h1 className={styles.homepageTitle2}>Announcements</h1>
+            <hr className={styles.homepageLinebreak}></hr>
+            <ul className={styles.homepageListItem}>
+              <li>This item</li>
+              <li>This item</li>
+              <li>This item</li>
+            </ul>
+          </div>
+          
+          <div className={styles.homepageSection}>
+            <h1 className={styles.homepageTitle2}>Upcoming Events</h1>
+            <hr className={styles.homepageLinebreak}></hr>
+            <ul className={styles.homepageListItem}>
+              <li>This item</li>
+              <li>This item</li>
+              <li>This item</li>
+            </ul>
+          </div>
 
-        <h1>Announcements</h1>
-        <h2>Upcoming Events</h2>
+        </div>  
       </main>
       {footer()}
     </div>

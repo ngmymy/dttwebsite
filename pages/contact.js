@@ -105,7 +105,7 @@ export default function Contact() {
                             </li>
                           </a>
                         </ul>
-                        <hr className={styles.contactIconLineBreak2}/>
+                        <hr className={styles.contactIconLineBreak}/>
                     </div>
                   </li>
                 </ul>

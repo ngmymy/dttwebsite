@@ -6,6 +6,8 @@
 
 /* Navigation bar container */
 .navbar {
+  font-family: "Roboto Slab", serif;
+  font-weight: 600;
   position: fixed;
   top: 0;
   left: 0;
@@ -55,19 +57,81 @@
 .navLinks a {
   text-decoration: none;
   color: #000000;
-  font-size: 16px;
+  font-size: 19px;
   transition: color 0.3s ease;
   white-space: nowrap;
 }
 
 .navLinks a:hover {
   color: #1f4fd0;
+  /* text-decoration: underline !important;
+  color: "red"; */
 }
 
 .main {
   margin-top: 100px; /* Offset for the fixed navbar */
   padding: 20px;
 }
+
+/* Homepage */
+.homepageTitle {
+  font-family: "Roboto Slab", serif;
+  font-size: 3rem;
+  margin-left: 10%;
+}
+
+.homepageCenter {
+  margin: auto;
+}
+
+.doanImg {
+  max-width: 1100px;
+  margin: auto;
+  margin-top: 1%;
+  border-radius: 25px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.homepageSectionContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1200px;
+  margin: auto;
+  margin-top: 2%;
+}
+
+.homepageTitle2 {
+  font-family: "Roboto Slab", serif;
+  font-size: 2rem;
+  /* margin: auto; */
+  text-align: center;
+}
+
+.homepageListItem{
+  font: 1.9rem;
+  padding: 10px;
+}
+.homepageLinebreak {
+  border: none;
+  border-top: 1px solid rgb(108, 108, 108);
+  width: 85%;
+  margin: auto;
+  margin-top: 1%;
+
+}
+.homepageSection {
+  border-radius: 25px;
+  background: #252c32;
+  padding: 20px;
+  width: 500px;
+  min-height: 230px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
 
 @media screen and (max-width: 850px) {
   .main {
@@ -79,22 +143,63 @@
   .navbar {
     flex-direction: column;
     padding: 16px 10%;
-    margin-bottom: 20px; /* Add bottom margin for mobile view */
+    /* margin-bottom: 20px; Add bottom margin for mobile view */
   }
 
   .navLinks {
-    flex-direction: column;
+    flex-direction: row;
     gap: 1rem;
     margin-top: 10px;
   }
 
   .navLinks a {
-    font-size: 14px;
+    font-size: 18px;
   }
 
   .main {
-    margin-top: 44%; /* Add top margin for mobile view */
+    margin-top: 30%; /* Add top margin for mobile view */
   }
+
+  /* Homepage Mobile View */
+  .homepageTitle {
+    font-size: 2.4rem;
+    margin-left: 0%;
+    margin-bottom: 2%;
+  }
+  
+  .homepageCenter {
+    margin: auto;
+  }
+  
+  .doanImg {
+    max-width: 355px;
+    margin-bottom: 8%;
+  }
+
+  
+  .homepageTitle2 {
+    font-size: 2rem;
+    /* margin: auto; */
+    text-align: center;
+  }
+  
+  .homepageListItem{
+    font: 1.9rem;
+    padding: 10px;
+  }
+
+  .homepageLinebreak {
+    border: none;
+    border-top: 1px solid rgb(108, 108, 108);
+    width: 85%;
+    margin: auto;
+    margin-top: 1%;
+  }
+
+  .homepageSection {
+    width: 350px;
+  }
+
 }
 
 .container {
