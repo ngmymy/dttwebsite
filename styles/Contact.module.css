@@ -12,8 +12,8 @@
 }
 
 .logo {
-    font-weight: 500;
-    font-size: 23px;
+    font-weight: 400;
+    font-size: 20px;
     color: #d8d6d6;
     line-height: 1; /* No extra spacing */
     font-family: "Roboto Slab", serif;
@@ -64,7 +64,6 @@
   margin: 0 auto;
   margin-top: auto;
   margin-bottom: 30px;
-  padding: 40px 0;
   font: 300 60px 'Oswald', sans-serif;
   color: #fff;
   text-transform: uppercase;
@@ -92,8 +91,8 @@
 
 .formControl {
   width: 100%;
-  max-width: 400px;
-  max-height: 400px;
+  /* max-width: 400px; */
+  /* max-height: 400px; */
   padding: 10px;
   border: 1.2px solid #dddcdc;
   border-radius: 5px;
@@ -162,8 +161,7 @@
 
 .contactList {
   list-style-type: none;
-  margin-left: -30px;
-  padding-right: 20px;
+  /* padding-right: 20px; */
 }
 
 .listItem {
@@ -205,7 +203,7 @@
 .socialMediaList {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   padding: 0;
   margin-top: 10px; 
 }
@@ -288,6 +286,22 @@
     width: 60px;
     line-height: 60px;
   }
+
+  .formControl {
+    width: 295px;
+  }
+
+  .sectionHeader {
+    margin-bottom: 10%;
+    padding: 0;
+  }
+
+  .sendButton {
+    width: 295px;
+  }
+  .altSendButton {
+    width: 295px;
+  }
   .socialMediaList li:after {
     width: 60px;
     height: 60px;
@@ -335,22 +349,14 @@
   }
 }
 
-@media screen and (max-width: 410px) {
+/* @media screen and (max-width: 410px) {
   .sendButton {
     width: 99%;
   }
-}
+} */
 
 .contactIconLineBreak {
   border: 1px solid #828282;
-  width: 80%; 
-  margin-left: 4px; /* Align to the left */
-  margin-top: 40px; 
-}
-
-.contactIconLineBreak2 {
-  border: 1px solid #828282;
-  width: 80%; 
-  margin-left: 4px; /* Align to the left */
-  margin-top: 10px; 
+  width: 100%; 
+  margin-top: 5%; 
 }
