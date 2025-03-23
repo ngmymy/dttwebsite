@@ -80,7 +80,7 @@ export default function Contact() {
                           width={50}
                           height={50}
                       />
-                      <div className={styles.logo}>
+                      <div className={styles.logoMail}>
                         <a href="mailto:doantomathienstpmn@gmail.com" title="Send me an email">
                         doantomathienstpmn@gmail.com
                         </a>
