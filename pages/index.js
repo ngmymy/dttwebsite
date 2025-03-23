@@ -46,7 +46,7 @@ export default function Home() {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 600,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
@@ -66,6 +66,9 @@ export default function Home() {
           </div>
           <div>
             <img src="gallery/pic5.jpg" alt="doan pic 5" className={styles.doanImg} />
+          </div>
+          <div>
+            <img src="gallery/bch.jpg" alt="bch pic" className={styles.doanImg} />
           </div>
           <div>
             <img src="gallery/pic8.jpg" alt="doan pic 8" className={styles.doanImg} />
@@ -96,11 +99,12 @@ export default function Home() {
                 make sure to register by the due date. We are looking forward to seeing you all there!
               </p>
               <ul>
-                <li>Planning Committee: Tr. Sarah Pham, Tr. Tyler Pham</li>
+                <li>Planning Committee: Tr. Sarah Pham, Tr. Tyler Pham, Mi Pham</li>
                 <li>Location: Stearns Scout Camp, MN</li>
                 <li>Date: June 27th - June 29th, 2025</li>
-                <li>Permission Slip: Head over to the <a href="/camp"><strong>Camp</strong></a> page to register!</li>
               </ul>
+              <p>Head over to the <a href="/camp"><strong>Camp</strong></a> page for more information! <br></br>
+              Fees can be paid in person using cash, check, or venmo.</p>
             </Section>
 
             {/* <Section title="Đội Trưởng Đội Phó Training" /> */}
