@@ -19,6 +19,14 @@
     font-family: "Roboto Slab", serif;
 }
 
+.logoMail {
+    font-weight: 400;
+    font-size: 18px;
+    color: #d8d6d6;
+    line-height: 1; /* No extra spacing */
+    font-family: "Roboto Slab", serif;
+}
+
 .logo span {
     display: block;
     font-size: 14px; /* Smaller subtitle */
@@ -45,6 +53,10 @@
 
   .navLinks a {
     font-size: 14px;
+  }
+
+  .logoMail{
+    font-size: 15px;
   }
 }
 
