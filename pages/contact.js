@@ -26,7 +26,7 @@ export default function Contact() {
                 <button className={styles.sendButton} id="submit" type="submit" value="SEND">
                   <div className={styles.altSendButton}>
                     <img 
-                      src="/send2.png" 
+                      src="contactform/send2.png" 
                       className={styles.paperPlane}
                       width={22}
                       height={22}
@@ -42,7 +42,7 @@ export default function Contact() {
                     <div className={styles.logoTitle}>
                       <img
                         className={styles.logoImg}
-                        src="/location.png"
+                        src="contactform/location.png"
                         alt="Location Icon"
                         width={50}
                         height={50}
@@ -59,7 +59,7 @@ export default function Contact() {
                     <div className={styles.logoTitle}>
                       <img
                           className={styles.logoImg}
-                          src="/phone.png"
+                          src="contactform/phone.png"
                           alt="Phone Icon"
                           width={50}
                           height={50}
@@ -75,7 +75,7 @@ export default function Contact() {
                     <div className={styles.logoTitle}>
                       <img
                           className={styles.logoImg}
-                          src="/mail.png"
+                          src="contactform/mail.png"
                           alt="Mail Icon"
                           width={50}
                           height={50}
@@ -91,19 +91,19 @@ export default function Contact() {
                         <ul className={styles.socialMediaList}>
                           <a href="https://www.facebook.com/doantomathienstpmn" target="_blank" rel="noopener noreferrer" className={styles.contactIcon}>
                             <li>
-                              <img src="/facebook.png" alt="Facebook Icon"/>
+                              <img src="contactform/facebook.png" alt="Facebook Icon"/>
                             </li>
                           </a>
                           <a href="https://www.instagram.com/tntt_tomathien?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className={styles.contactIcon}>
                             <li> 
-                              <img src="/instagram.png" alt="Instagram Icon" />
+                              <img src="contactform/instagram.png" alt="Instagram Icon" />
                             </li>
                           </a>
-                          <a href="https://www.instagram.com/tntt_tomathien?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className={styles.contactIcon}>
+                          {/* <a href="https://www.instagram.com/tntt_tomathien?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className={styles.contactIcon}>
                             <li> 
                               <img src="/instagram.png" alt="Instagram Icon" />
                             </li>
-                          </a>
+                          </a> */}
                         </ul>
                         <hr className={styles.contactIconLineBreak}/>
                     </div>
