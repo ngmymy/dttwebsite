@@ -2,10 +2,9 @@ import { useState } from 'react';
 import { motion, AnimatePresence, color } from 'framer-motion';
 import Slider from 'react-slick';
 import styles from '../styles/Home.module.css';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import header from './header';
 import footer from './footer';
-import Link from "next/link";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -66,19 +65,19 @@ export default function Home() {
             <img src="gallery/doanpic.jpg" alt="doan pic 1" className={styles.doanImg} />
           </div>
           <div>
-            <img src="gallery/pic5.jpg" alt="doan pic 2" className={styles.doanImg} />
+            <img src="gallery/pic5.jpg" alt="doan pic 5" className={styles.doanImg} />
           </div>
           <div>
-            <img src="gallery/pic8.jpg" alt="doan pic 3" className={styles.doanImg} />
+            <img src="gallery/pic8.jpg" alt="doan pic 8" className={styles.doanImg} />
           </div>
           <div>
-            <img src="gallery/pic9.jpg" alt="doan pic 3" className={styles.doanImg} />
+            <img src="gallery/pic9.jpg" alt="doan pic 9" className={styles.doanImg} />
           </div>
           <div>
-            <img src="gallery/pic11.jpg" alt="doan pic 3" className={styles.doanImg} />
+            <img src="gallery/pic11.jpg" alt="doan pic 11" className={styles.doanImg} />
           </div>
           <div>
-            <img src="gallery/pic14.jpg" alt="doan pic 3" className={styles.doanImg} />
+            <img src="gallery/pic14.jpg" alt="doan pic 14" className={styles.doanImg} />
           </div>
         </Slider>
 
