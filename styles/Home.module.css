@@ -198,83 +198,6 @@
   margin-bottom: 5px;
 }
 
-
-@media screen and (max-width: 850px) {
-  .main {
-    margin-top: 20%;
-  }
-}
-
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    padding: 16px 10%;
-    /* margin-bottom: 20px; Add bottom margin for mobile view */
-  }
-
-  .navLinks {
-    flex-direction: row;
-    gap: 1rem;
-    margin-top: 10px;
-  }
-
-  .navLinks a {
-    font-size: 18px;
-  }
-
-  .main {
-    margin-top: 30%; /* Add top margin for mobile view */
-  }
-
-  /* Homepage Mobile View */
-  .homepageTitle {
-    font-size: 1.5rem;
-    margin-left: 0%;
-    margin-bottom: 2%;
-    margin-top: 1%;
-  }
-  
-  .homepageCenter {
-    margin: auto;
-  }
-  
-  .doanImg {
-    max-width: 350px;
-    margin-bottom: 5%;
-  }
-  
-  .homepageTitle2 {
-    font-size: 2rem;
-    /* margin: auto; */
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  
-  .homepageListItem{
-    padding: 10px;
-    list-style-type: none;
-  }
-
-  .homepageLinebreak {
-    border: none;
-    border-top: 1px solid rgb(108, 108, 108);
-    width: 85%;
-    margin: auto;
-    margin-top: 1%;
-    margin-bottom: 10px;
-  }
-
-  .homepageSection, .homepageSection1 {
-    width: 350px;
-  }
-
-  .slider {
-    max-width: 350px;
-    margin-bottom: 5%;
-  }
-
-}
-
 .container {
   display: flex;
   flex-direction: column;
@@ -349,7 +272,7 @@
 
 .bchPageHeader {
   font-family: "Roboto Slab", serif;
-  font-size: 2.3rem;
+  font-size: 2.2rem;
   font-weight: 500;
   letter-spacing: 0.025rem;
   text-align: center;
@@ -436,3 +359,84 @@
   margin-top: 50px;
 }
 
+@media screen and (max-width: 850px) {
+  .main {
+    margin-top: 20%;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 16px 10%;
+    /* margin-bottom: 20px; Add bottom margin for mobile view */
+  }
+
+  .navLinks {
+    flex-direction: row;
+    gap: 1rem;
+    margin-top: 10px;
+  }
+
+  .navLinks a {
+    font-size: 18px;
+  }
+
+  .main {
+    margin-top: 30%; /* Add top margin for mobile view */
+  }
+
+  /* Homepage Mobile View */
+  .homepageTitle {
+    font-size: 1.5rem;
+    margin-left: 0%;
+    margin-bottom: 2%;
+    margin-top: 1%;
+    font-weight: 500;
+  }
+  
+  .homepageCenter {
+    margin: auto;
+  }
+  
+  .doanImg {
+    max-width: 350px;
+    margin-bottom: 5%;
+  }
+  
+  .homepageTitle2 {
+    font-size: 1.5em;
+    /* margin: auto; */
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .homepageListItem{
+    padding: 10px;
+    list-style-type: none;
+  }
+
+  .homepageLinebreak {
+    border: none;
+    border-top: 1px solid rgb(108, 108, 108);
+    width: 85%;
+    margin: auto;
+    margin-top: 1%;
+    margin-bottom: 10px;
+  }
+
+  .homepageSection, .homepageSection1 {
+    width: 350px;
+  }
+
+  .slider {
+    max-width: 350px;
+    margin-bottom: 5%;
+  }
+
+  .bchPageHeader {
+    font-size: 1.5rem;
+  }
+
+}
