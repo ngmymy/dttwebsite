@@ -84,7 +84,6 @@ export default function Home() {
         <div className={styles.homepageSectionContainer}>
           <div className={styles.homepageSection1}>
             <h1 className={styles.homepageTitle2}>Announcements</h1>
-            {/* <hr className={styles.homepageLinebreak} /> */}
 
             {/* <Section title="Any upcoming dates off" /> */}
 
