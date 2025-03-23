@@ -81,8 +81,8 @@ export default function Contact() {
                           height={50}
                       />
                       <div className={styles.logo}>
-                        <a href="mailto:nguy4513@umn.edu" title="Send me an email">
-                          nguy4513@umn.edu
+                        <a href="mailto:doantomathienstpmn@gmail.com" title="Send me an email">
+                        doantomathienstpmn@gmail.com
                         </a>
                       </div>
                     </div>
