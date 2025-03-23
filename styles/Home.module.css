@@ -77,7 +77,7 @@
 /* Homepage */
 .homepageTitle {
   font-family: "Roboto Slab", serif;
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 400;
   /* margin-left: 10%; */
   text-align: center;
@@ -88,7 +88,7 @@
 }
 
 .doanImg {
-  max-width: 900px;
+  max-width: 700px;
   margin: auto;
   margin-top: 1%;
   border-radius: 18px;
@@ -416,7 +416,7 @@
   }
   
   .doanImg {
-    max-width: 350px;
+    max-width: 300px;
     margin-bottom: 5%;
   }
   

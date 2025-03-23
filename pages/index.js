@@ -79,6 +79,9 @@ export default function Home() {
           <div>
             <img src="gallery/pic14.jpg" alt="doan pic 14" className={styles.doanImg} />
           </div>
+          <div>
+            <img src="gallery/pic15.jpg" alt="doan pic 13" className={styles.doanImg} />
+          </div>
         </Slider>
 
         <div className={styles.homepageSectionContainer}>
