@@ -112,20 +112,14 @@
   margin-bottom: 15px;
   color: #fff;
   letter-spacing: 1px;
+  resize: vertical;
+  max-height: 350px;
 }
 
 .formControl:focus {
     border: 2px solid #006aff !important;
     box-shadow: 0 0 20px rgba(51, 122, 183, 1.8); /* Blue glowing effect */
     border-radius: 5px;
-}
-
-.formControl textarea { 
-  resize: none;
-  max-width: 400px;
-  background-color: #1a222b;
-  color: #fff;
-  letter-spacing: 1px;
 }
 
 .formControl::placeholder {
