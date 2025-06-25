@@ -95,8 +95,10 @@ export default function Home() {
 
             <Section title="Camp Radiance 2025">
               <p>
-                Hello everyone! Annual Summer Camp is coming up soon! Please
-                make sure to register by the due date. We are looking forward to seeing you all there!
+                Hello everyone! Annual Summer Camp is this weekend! We hope you are all excited. 
+              </p>
+              <p>
+                Please make sure to check the packing list and camp rules below. If you have any questions, please reach out to the planning committee.
               </p>
               <ul>
                 <li>Planning Committee: Tr. Sarah Pham, Tr. Tyler Pham, Mi Pham</li>
@@ -104,24 +106,7 @@ export default function Home() {
                 <li>Date: June 27th - June 29th, 2025</li>
               </ul>
               <p>Head over to the <a href="/camp"><strong>Camp</strong></a> page for more information! <br></br>
-              Fees can be paid in person using cash, check, or venmo.</p>
-            </Section>
-
-            {/* <Section title="Đội Trưởng Đội Phó Training" /> */}
-            
-            <Section title="Holy Week">
-              <p>
-                Holy Week- a very important time in our liturgical year, is coming up and we would like to 
-                announce some important dates to make note of as we observe this time of solemnity.
-              </p>
-              <ul>
-                <li><strong>Palm Sunday:</strong> April 13</li>
-                <li><strong>Holy Thursday:</strong> April 17</li>
-                <li><strong>Good Friday:</strong> April 18</li>
-                <li><strong>Holy Saturday:</strong> April 19</li>
-                <li><strong>Easter Sunday:</strong> April 20</li>
-              </ul>
-              <p>Easter Egg Hunt will be on Easter Sunday!</p>
+              Registration is now closed!</p>
             </Section>
           </div>
 
