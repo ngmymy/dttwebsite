@@ -14,8 +14,9 @@ export default function Camp() {
             {header()}
             <main className={styles.main}>
                 <div className={styles.container}>
+                    <h1 className={styles.campClosed}>Camp Registration is CLOSED!</h1>
                     {camp2025info()}
-                    {camp2025form()}
+                    {/* {camp2025form()} */}
                 </div>
             </main>
             {footer()}
