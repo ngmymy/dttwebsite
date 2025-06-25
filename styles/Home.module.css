@@ -359,6 +359,16 @@
   margin-top: 50px;
 }
 
+.campClosed {
+  background-color: #ffffff;
+  color: #e03143;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 20px;
+}
+
 @media screen and (max-width: 850px) {
   .main {
     margin-top: 20%;
