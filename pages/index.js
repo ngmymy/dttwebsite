@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+import styles from '../styles/Home.module.css';
 import { ChevronDown } from 'lucide-react';
 import header from './header';
 import footer from './footer';
+import { announcementService } from '../lib/supabase';
 
 const Section = ({ title, children }) => {
   const [expanded, setExpanded] = useState(false);
@@ -65,43 +67,56 @@ const Section = ({ title, children }) => {
 export default function Home() {
   const [announcements, setAnnouncements] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetchAnnouncements();
     
-    // Listen for localStorage changes (when admin updates announcements)
-    const handleStorageChange = (e) => {
-      if (e.key === 'announcements') {
-        fetchAnnouncements();
-      }
-    };
-    
-    window.addEventListener('storage', handleStorageChange);
-    
-    // Also check for changes periodically (for same-tab updates)
-    const interval = setInterval(() => {
+    // Set up real-time subscription for announcements
+    const subscription = announcementService.subscribeToAnnouncements((payload) => {
+      console.log('Real-time update received:', payload);
+      // Refetch announcements when changes occur
       fetchAnnouncements();
-    }, 5000); // Check every 5 seconds
-    
+    });
+
     return () => {
-      window.removeEventListener('storage', handleStorageChange);
-      clearInterval(interval);
+      announcementService.unsubscribe(subscription);
     };
   }, []);
 
   const fetchAnnouncements = async () => {
     try {
-      const savedAnnouncements = localStorage.getItem('announcements');
-      if (savedAnnouncements) {
-        const data = JSON.parse(savedAnnouncements);
-        const activeAnnouncements = data.filter(announcement => announcement.active);
-        setAnnouncements(activeAnnouncements);
+      setLoading(true);
+      setError(null);
+      
+      const { data, error } = await announcementService.getAnnouncements();
+      
+      if (error) {
+        console.error('Error fetching announcements:', error);
+        setError('Failed to load announcements');
+        setAnnouncements([]);
+        return;
+      }
+
+      if (data) {
+        // Convert database format to component format
+        const formattedAnnouncements = data.map(announcement => ({
+          id: announcement.id,
+          title: announcement.title,
+          content: announcement.content,
+          details: announcement.details || [],
+          extraInfo: announcement.extra_info || '',
+          active: announcement.active,
+          createdAt: announcement.created_at
+        }));
+        
+        setAnnouncements(formattedAnnouncements);
       } else {
-        // No announcements in storage
         setAnnouncements([]);
       }
     } catch (error) {
-      console.error('Error loading announcements:', error);
+      console.error('Error fetching announcements:', error);
+      setError('Failed to load announcements');
       setAnnouncements([]);
     } finally {
       setLoading(false);
@@ -159,12 +174,13 @@ export default function Home() {
         justifyContent: 'center',
         height: '70vh',
         textAlign: 'center',
-        padding: '0 2rem'
+        padding: '0 2rem',
+        paddingTop: '120px' // Account for fixed header
       }}>
         <div>
           <h1 
             style={{
-              fontSize: 'clamp(2rem, 5vw, 4rem)',
+              fontSize: 'clamp(2.5rem, 5vw, 4rem)',
               fontWeight: 'bold',
               color: '#ffffff',
               marginBottom: '1rem',
@@ -238,6 +254,26 @@ export default function Home() {
               }}>
                 Announcements
               </h2>
+              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '1rem', marginTop: '0.5rem' }}>
+                <button
+                  onClick={fetchAnnouncements}
+                  disabled={loading}
+                  style={{
+                    // padding: '0.25rem 0.75rem',
+                    padding: '0',
+                    background: 'none',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '6px',
+                    fontSize: '0.75rem',
+                    cursor: loading ? 'not-allowed' : 'pointer',
+                    textDecoration: 'underline',
+                    opacity: loading ? 0.7 : 1
+                  }}
+                >
+                  {loading ? '...' : 'Click here to refresh'}
+                </button>
+              </div>
             </div>
             
             {loading ? (
@@ -255,17 +291,42 @@ export default function Home() {
                     animation: 'spin 1s linear infinite'
                   }}
                 />
-                <p>Loading announcements...</p>
+                <p>Loading announcements from database...</p>
+              </div>
+            ) : error ? (
+              <div
+                style={{
+                  textAlign: 'center',
+                  padding: '2rem',
+                  color: '#fca5a5'
+                }}
+              >
+                <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>⚠️</div>
+                <p style={{ margin: 0, fontSize: '1rem' }}>{error}</p>
+                <button
+                  onClick={fetchAnnouncements}
+                  style={{
+                    marginTop: '1rem',
+                    padding: '0.5rem 1rem',
+                    background: '#ef4444',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '8px',
+                    cursor: 'pointer'
+                  }}
+                >
+                  Try Again
+                </button>
               </div>
             ) : announcements.length > 0 ? (
-              announcements.map((announcement, index) => (
+              announcements.map((announcement) => (
                 <div key={announcement.id}>
                   <Section title={announcement.title}>
                     <p style={{ marginBottom: '1rem' }}>{announcement.content}</p>
-                    {announcement.details && announcement.details.length > 0 && (
+                    {announcement.details && announcement.details.length > 0 && announcement.details[0] && (
                       <ul style={{ marginLeft: '1.5rem', marginBottom: '1rem' }}>
                         {announcement.details.map((detail, index) => (
-                          <li key={index} style={{ marginBottom: '0.5rem' }}>{detail}</li>
+                          detail && <li key={index} style={{ marginBottom: '0.5rem' }}>{detail}</li>
                         ))}
                       </ul>
                     )}

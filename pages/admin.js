@@ -1,23 +1,14 @@
 // pages/admin.js
 import { useState, useEffect } from 'react';
+import styles from '../styles/Home.module.css';
 import header from './header';
 import footer from './footer';
 import Head from 'next/head';
+import { announcementService } from '../lib/supabase';
 
 export default function Admin() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [announcements, setAnnouncements] = useState([
-    {
-      id: 1,
-      title: "Title",
-      content: "Content",
-      details: [
-        "Detail"
-      ],
-      active: false,
-      createdAt: new Date().toISOString()
-    }
-  ]);
+  const [announcements, setAnnouncements] = useState([]);
   const [loading, setLoading] = useState(false);
   const [editingId, setEditingId] = useState(null);
   const [formData, setFormData] = useState({
@@ -39,23 +30,56 @@ export default function Admin() {
     const savedAuth = localStorage.getItem('adminAuth');
     if (savedAuth === 'authenticated') {
       setIsAuthenticated(true);
-    }
-    
-    // Load announcements from localStorage
-    const savedAnnouncements = localStorage.getItem('announcements');
-    if (savedAnnouncements) {
-      try {
-        setAnnouncements(JSON.parse(savedAnnouncements));
-      } catch (error) {
-        console.error('Error parsing saved announcements:', error);
-      }
+      fetchAnnouncements();
     }
   }, []);
 
-  // Save announcements to localStorage whenever they change
   useEffect(() => {
-    localStorage.setItem('announcements', JSON.stringify(announcements));
-  }, [announcements]);
+    if (isAuthenticated) {
+      // Set up real-time subscription for announcements
+      const subscription = announcementService.subscribeToAnnouncements((payload) => {
+        // Refetch announcements when changes occur
+        fetchAnnouncements();
+      });
+
+      return () => {
+        announcementService.unsubscribe(subscription);
+      };
+    }
+  }, [isAuthenticated]);
+
+  const fetchAnnouncements = async () => {
+    try {
+      setLoading(true);
+      const { data, error } = await announcementService.getAllAnnouncements();
+      
+      if (error) {
+        console.error('Error fetching announcements:', error);
+        alert('Error loading announcements: ' + error);
+        return;
+      }
+
+      if (data) {
+        // Convert database format to component format
+        const formattedAnnouncements = data.map(announcement => ({
+          id: announcement.id,
+          title: announcement.title,
+          content: announcement.content,
+          details: announcement.details || [],
+          extraInfo: announcement.extra_info || '',
+          active: announcement.active,
+          createdAt: announcement.created_at
+        }));
+        
+        setAnnouncements(formattedAnnouncements);
+      }
+    } catch (error) {
+      console.error('Error fetching announcements:', error);
+      alert('Error loading announcements');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -64,36 +88,47 @@ export default function Admin() {
     if (loginData.username === 'admin' && loginData.password === 'tomathien2025') {
       setIsAuthenticated(true);
       localStorage.setItem('adminAuth', 'authenticated');
+      fetchAnnouncements();
     } else {
       alert('Invalid credentials');
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     
-    if (editingId) {
-      // Update existing announcement
-      setAnnouncements(prev => prev.map(announcement => 
-        announcement.id === editingId 
-          ? { ...announcement, ...formData }
-          : announcement
-      ));
-    } else {
-      // Create new announcement
-      const newAnnouncement = {
-        id: Math.max(...announcements.map(a => a.id), 0) + 1,
-        ...formData,
-        active: true,
-        createdAt: new Date().toISOString()
-      };
-      setAnnouncements(prev => [newAnnouncement, ...prev]);
+    try {
+      if (editingId) {
+        // Update existing announcement
+        const { data, error } = await announcementService.updateAnnouncement(editingId, formData);
+        
+        if (error) {
+          alert('Error updating announcement: ' + error);
+          return;
+        }
+
+        alert('Announcement updated successfully!');
+      } else {
+        // Create new announcement
+        const { data, error } = await announcementService.createAnnouncement(formData);
+        
+        if (error) {
+          alert('Error creating announcement: ' + error);
+          return;
+        }
+
+        alert('Announcement created successfully!');
+      }
+      
+      resetForm();
+      fetchAnnouncements(); // Refresh the list
+    } catch (error) {
+      console.error('Error submitting announcement:', error);
+      alert('Error submitting announcement');
+    } finally {
+      setLoading(false);
     }
-    
-    resetForm();
-    setLoading(false);
-    alert(editingId ? 'Announcement updated!' : 'Announcement created!');
   };
 
   const handleEdit = (announcement) => {
@@ -106,11 +141,43 @@ export default function Admin() {
     });
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     if (!confirm('Are you sure you want to delete this announcement?')) return;
     
-    setAnnouncements(prev => prev.filter(announcement => announcement.id !== id));
-    alert('Announcement deleted!');
+    try {
+      setLoading(true);
+      const { error } = await announcementService.deleteAnnouncement(id);
+      
+      if (error) {
+        alert('Error deleting announcement: ' + error);
+        return;
+      }
+
+      alert('Announcement deleted successfully!');
+      fetchAnnouncements(); // Refresh the list
+    } catch (error) {
+      console.error('Error deleting announcement:', error);
+      alert('Error deleting announcement');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const toggleAnnouncementStatus = async (id, currentStatus) => {
+    try {
+      const newStatus = !currentStatus;
+      const { error } = await announcementService.toggleAnnouncementStatus(id, newStatus);
+      
+      if (error) {
+        alert('Error updating announcement status: ' + error);
+        return;
+      }
+
+      fetchAnnouncements(); // Refresh the list
+    } catch (error) {
+      console.error('Error toggling announcement status:', error);
+      alert('Error updating announcement status');
+    }
   };
 
   const resetForm = () => {
@@ -141,9 +208,9 @@ export default function Admin() {
   const handleLogout = () => {
     localStorage.removeItem('adminAuth');
     setIsAuthenticated(false);
+    setAnnouncements([]);
   };
 
-  // not yet signed in
   if (!isAuthenticated) {
     return (
       <div style={{ 
@@ -394,27 +461,45 @@ export default function Admin() {
               }}>
                 Admin Dashboard
               </h1>
-              <p style={{ margin: '0.5rem 0 0 0', color: '#6b7280', fontSize: '1.1rem' }}>
-                Manage announcements and content
+              <p style={{ margin: '0.5rem 0 0 0', color: '#6b7280', fontSize: '1rem' }}>
+                Manage announcements and content • Connected to database
               </p>
             </div>
-            <button 
-              onClick={handleLogout}
-              style={{
-                padding: '1rem 2rem',
-                background: '#ef4444',
-                color: 'white',
-                border: 'none',
-                borderRadius: '16px',
-                cursor: 'pointer',
-                fontWeight: '600',
-                fontSize: '1rem',
-                textTransform: 'uppercase',
-                letterSpacing: '0.05em'
-              }}
-            >
-              🚪 Logout
-            </button>
+            <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+              <button 
+                onClick={fetchAnnouncements}
+                disabled={loading}
+                style={{
+                  padding: '1rem 2rem',
+                  background: loading ? '#94a3b8' : '#10b981',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '16px',
+                  cursor: loading ? 'not-allowed' : 'pointer',
+                  fontWeight: '600',
+                  fontSize: '1rem'
+                }}
+              >
+                {loading ? 'Loading...' : 'Refresh'}
+              </button>
+              <button 
+                onClick={handleLogout}
+                style={{
+                  padding: '1rem 2rem',
+                  background: '#ef4444',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '16px',
+                  cursor: 'pointer',
+                  fontWeight: '600',
+                  fontSize: '1rem',
+                //   textTransform: 'uppercase',
+                //   letterSpacing: '0.05em'
+                }}
+              >
+                Logout
+              </button>
+            </div>
           </div>
 
           <div style={{ 
@@ -647,16 +732,17 @@ export default function Admin() {
                 border: '1px solid rgba(255, 255, 255, 0.2)'
               }}
             >
-              <div style={{ marginBottom: '2rem', marginTop: '4rem', textAlign: 'center' }}>
+              <div style={{ marginBottom: '2rem', textAlign: 'center' }}>
                 <h2 style={{ 
+                  margin: 0,
                   fontSize: '1.5rem',
                   color: '#000000',
                   fontWeight: 'bold'
                 }}>
-                  📢 Live Announcements
+                  All Announcements
                 </h2>
                 <p style={{ margin: '0.5rem 0 0 0', color: '#4b5563', fontSize: '0.9rem' }}>
-                  {announcements.length} active announcement{announcements.length !== 1 ? 's' : ''}
+                  {announcements.length} announcement{announcements.length !== 1 ? 's' : ''} in database
                 </p>
               </div>
               
@@ -667,103 +753,137 @@ export default function Admin() {
                 maxHeight: '600px',
                 overflowY: 'auto'
               }}>
-                {announcements.map((announcement) => (
-                  <div 
-                    key={announcement.id}
-                    style={{
-                      padding: '1.5rem',
-                      background: '#f8fafc',
-                      borderRadius: '16px',
-                      border: '1px solid #e5e7eb'
-                    }}
-                  >
-                    <h3 style={{ 
-                      margin: '0 0 0.5rem 0',
-                      fontSize: '1.2rem',
-                      color: 'black',
-                      fontWeight: 'bold'
-                    }}>
-                      📌 {announcement.title}
-                    </h3>
-                    <p style={{ margin: '0 0 0.5rem 0', lineHeight: 1.6, color: 'black' }}>
-                      {announcement.content}
-                    </p>
-                    
-                    {announcement.details && announcement.details.length > 0 && (
-                      <ul style={{ margin: '0.5rem 0', paddingLeft: '1.5rem', color: 'black' }}>
-                        {announcement.details.map((detail, index) => (
-                          <li key={index} style={{ marginBottom: '0.25rem', color: 'black' }}>
-                            {detail}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                    
-                    {announcement.extraInfo && (
-                      <div style={{ 
-                        padding: '0.75rem',
-                        background: 'rgba(59, 130, 246, 0.1)',
-                        borderRadius: '8px',
+                {loading ? (
+                  <div style={{ textAlign: 'center', padding: '2rem' }}>
+                    <div style={{
+                      width: '40px',
+                      height: '40px',
+                      border: '3px solid #e5e7eb',
+                      borderTopColor: '#2563eb',
+                      borderRadius: '50%',
+                      animation: 'spin 1s linear infinite',
+                      margin: '0 auto 1rem'
+                    }} />
+                    <p style={{ color: '#6b7280' }}>Loading announcements...</p>
+                  </div>
+                ) : announcements.length > 0 ? (
+                  announcements.map((announcement) => (
+                    <div 
+                      key={announcement.id}
+                      style={{
+                        padding: '1.5rem',
+                        background: announcement.active ? '#f8fafc' : '#f1f5f9',
+                        borderRadius: '16px',
+                        border: `1px solid ${announcement.active ? '#e5e7eb' : '#cbd5e1'}`,
+                        opacity: announcement.active ? 1 : 0.7
+                      }}
+                    >
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem' }}>
+                        <h3 style={{ 
+                          margin: 0,
+                          fontSize: '1.2rem',
+                          fontWeight: 'bold',
+                          color: 'black',
+                          flex: 1
+                        }}>
+                          📌 {announcement.title}
+                        </h3>
+                        <div style={{ display: 'flex', gap: '0.5rem', color: 'black', alignItems: 'center' }}>
+                          <button
+                            onClick={() => toggleAnnouncementStatus(announcement.id, announcement.active)}
+                            style={{
+                              padding: '0.25rem 0.5rem',
+                              background: announcement.active ? '#10b981' : '#6b7280',
+                              border: 'none',
+                              borderRadius: '6px',
+                              fontSize: '0.75rem',
+                              cursor: 'pointer'
+                            }}
+                          >
+                            {announcement.active ? '👁️ Active' : '👁️‍🗨️ Hidden'}
+                          </button>
+                        </div>
+                      </div>
+                      
+                      <p style={{ margin: '0 0 0.5rem 0', color: 'black', lineHeight: 1.6 }}>
+                        {announcement.content}
+                      </p>
+                      
+                      {announcement.details && announcement.details.length > 0 && announcement.details[0] && (
+                        <ul style={{ margin: '0.5rem 0', paddingLeft: '1.5rem', color: 'black' }}>
+                          {announcement.details.map((detail, index) => (
+                            detail && <li key={index} style={{ marginBottom: '0.25rem', color: 'black' }}>
+                              {detail}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                      
+                      {announcement.extraInfo && (
+                        <div style={{ 
+                          padding: '0.75rem',
+                          background: 'rgba(59, 130, 246, 0.1)',
+                          borderRadius: '8px',
+                          marginTop: '1rem',
+                          color: 'black'
+                        }}>
+                          <p style={{ 
+                            fontStyle: 'italic', 
+                            color: '#1e40af',
+                            margin: 0,
+                            fontSize: '0.9rem'
+                          }}>
+                            💡 {announcement.extraInfo}
+                          </p>
+                        </div>
+                      )}
+                      
+                      <div style={{
+                        display: 'flex',
+                        gap: '0.75rem',
+                        paddingTop: '1rem',
+                        borderTop: '1px solid #e5e7eb',
                         marginTop: '1rem'
                       }}>
-                        <p style={{ 
-                          fontStyle: 'italic', 
-                          color: '#1e40af',
-                          margin: 0,
-                          fontSize: '0.9rem'
-                        }}>
-                          💡 {announcement.extraInfo}
-                        </p>
+                        <button 
+                          onClick={() => handleEdit(announcement)}
+                          style={{
+                            flex: 1,
+                            padding: '0.75rem 1rem',
+                            background: '#3b82f6',
+                            color: 'white',
+                            border: 'none',
+                            borderRadius: '8px',
+                            cursor: 'pointer'
+                          }}
+                        >
+                          ✏️ Edit
+                        </button>
+                        <button 
+                          onClick={() => handleDelete(announcement.id)}
+                          style={{
+                            flex: 1,
+                            padding: '0.75rem 1rem',
+                            background: '#ef4444',
+                            color: 'white',
+                            border: 'none',
+                            borderRadius: '8px',
+                            cursor: 'pointer'
+                          }}
+                        >
+                          🗑️ Delete
+                        </button>
                       </div>
-                    )}
-                    
-                    <div style={{
-                      display: 'flex',
-                      gap: '0.75rem',
-                      paddingTop: '1rem',
-                      borderTop: '1px solid #e5e7eb',
-                      marginTop: '1rem'
-                    }}>
-                      <button 
-                        onClick={() => handleEdit(announcement)}
-                        style={{
-                          flex: 1,
-                          padding: '0.75rem 1rem',
-                          background: '#3b82f6',
-                          color: 'white',
-                          border: 'none',
-                          borderRadius: '8px',
-                          cursor: 'pointer'
-                        }}
-                      >
-                        ✏️ Edit
-                      </button>
-                      <button 
-                        onClick={() => handleDelete(announcement.id)}
-                        style={{
-                          flex: 1,
-                          padding: '0.75rem 1rem',
-                          background: '#ef4444',
-                          color: 'white',
-                          border: 'none',
-                          borderRadius: '8px',
-                          cursor: 'pointer'
-                        }}
-                      >
-                        🗑️ Delete
-                      </button>
                     </div>
-                  </div>
-                ))}
-                
-                {announcements.length === 0 && (
+                  ))
+                ) : (
                   <div style={{
                     textAlign: 'center',
                     padding: '3rem',
                     color: '#374151'
                   }}>
                     <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📭</div>
-                    <p style={{ margin: 0, fontSize: '1.1rem', color: '#000000' }}>No announcements yet</p>
+                    <p style={{ margin: 0, fontSize: '1.1rem', color: '#000000' }}>No announcements in database</p>
                     <p style={{ margin: '0.5rem 0 0 0', fontSize: '0.9rem', color: '#4b5563' }}>Create your first announcement to get started!</p>
                   </div>
                 )}

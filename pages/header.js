@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 // import styles from "../styles/Home.module.css";
 import Link from "next/link";
+import Head from 'next/head';
 
 export default function header() {
     return (
