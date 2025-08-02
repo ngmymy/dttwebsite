@@ -203,7 +203,7 @@ export default function Contact() {
 
   return (
     <div style={{
-      minHeight: '100vh',
+
       background: '##1f3852'
     }}>
       <div className={styles.page}>

@@ -154,13 +154,13 @@ export default function Home() {
             width: '100%',
             height: '100%',
             backgroundImage: `
-              linear-gradient(rgba(31, 56, 82, 0.7), rgba(31, 56, 82, 0.7)),
+              linear-gradient(rgba(65, 96, 130, 0.7), rgba(31, 56, 82, 0.7)),
               url('gallery/doanpic.jpg')
             `,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundBlendMode: 'overlay',
-            filter: 'brightness(0.8)'
+            filter: 'brightness(1)'
           }}
         />
       </div>
@@ -271,7 +271,7 @@ export default function Home() {
                     opacity: loading ? 0.7 : 1
                   }}
                 >
-                  {loading ? '...' : 'Click here to refresh'}
+                  {loading ? 'Refreshing...' : 'Click here to refresh'}
                 </button>
               </div>
             </div>

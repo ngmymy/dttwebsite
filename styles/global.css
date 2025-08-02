@@ -28,7 +28,7 @@ body {
 body {
   color: var(--foreground);
   background: #202a35;
-  font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
+  font-family: "Roboto Slab", Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -49,27 +49,7 @@ main {
   flex-direction: column;
   justify-content: center;
   margin: auto;
-  /* Dynamic padding-top based on header height */
   padding-top: 120px; /* Default for desktop */
-}
-
-/* Mobile responsive header spacing */
-@media (max-width: 800px) {
-  main {
-    padding-top: 160px; /* More space for stacked mobile header */
-  }
-}
-
-@media (max-width: 600px) {
-  main {
-    padding-top: 150px; /* Adjust for smaller mobile screens */
-  }
-}
-
-@media (max-width: 480px) {
-  main {
-    padding-top: 180px; /* More space for vertically stacked nav */
-  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -103,4 +83,28 @@ footer a {
   color: #62707e;
   font-size: small;
   font-family: "Roboto Slab", serif;
+}
+
+/* Mobile responsive header spacing */
+@media (max-width: 800px) {
+  main {
+    padding-top: 160px; /* More space for stacked mobile header */
+  }
+}
+
+@media (max-width: 600px) {
+  main {
+    padding-top: 150px; /* Adjust for smaller mobile screens */
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    padding-top: 120vh; /* More space for vertically stacked nav */
+  }
+
+  footer {
+    font-size: 10px;
+    text-align: center;
+  }
 }
