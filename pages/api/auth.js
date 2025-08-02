@@ -12,7 +12,7 @@ export default function handler(req, res) {
       
       // Simple auth - in production, use proper hashing
       const ADMIN_USERNAME = 'admin';
-      const ADMIN_PASSWORD = 'tomathien2025'; // Change this!
+      const ADMIN_PASSWORD = 'tomathien2025';
       
       if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
         return res.status(200).json({ 
@@ -45,29 +45,9 @@ export default function handler(req, res) {
       const defaultAnnouncements = [
         {
           id: 1,
-          title: "Camp Radiance 2025",
-          content: "Hello everyone! Annual Summer Camp is coming up soon! Please make sure to register by the due date. We are looking forward to seeing you all there!",
-          details: [
-            "Planning Committee: Tr. Sarah Pham, Tr. Tyler Pham",
-            "Location: Stearns Scout Camp, MN", 
-            "Date: June 27th - June 29th, 2025",
-            "Permission Slip: Head over to the Camp page to register!"
-          ],
-          active: true,
-          createdAt: new Date().toISOString()
-        },
-        {
-          id: 2,
-          title: "Holy Week",
-          content: "Holy Week- a very important time in our liturgical year, is coming up and we would like to announce some important dates to make note of as we observe this time of solemnity.",
-          details: [
-            "Palm Sunday: April 13",
-            "Holy Thursday: April 17", 
-            "Good Friday: April 18",
-            "Holy Saturday: April 19",
-            "Easter Sunday: April 20"
-          ],
-          extraInfo: "Easter Egg Hunt will be on Easter Sunday!",
+          title: "Example Announcement",
+            content: "This is an example announcement.",
+            details: ["Detail 1", "Detail 2"],
           active: true,
           createdAt: new Date().toISOString()
         }
