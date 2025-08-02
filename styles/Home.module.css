@@ -380,11 +380,11 @@
   margin-top: 20px;
 }
 
-@media screen and (max-width: 850px) {
+/* @media screen and (max-width: 850px) {
   .main {
     margin-top: 20%;
   }
-}
+} */
 
 @media (max-width: 768px) {
   .navbar {
@@ -402,11 +402,6 @@
   .navLinks a {
     font-size: 18px;
   }
-
-  .main {
-    margin-top: 30%; /* Add top margin for mobile view */
-  }
-
   /* Homepage Mobile View */
   .homepageTitle {
     font-size: 1.5rem;
